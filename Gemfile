@@ -21,7 +21,7 @@ gem "jbuilder"
 gem 'devise'
 gem 'bootstrap'
 gem 'faker'
-gem 'rspec-rails', "~> 6.0.0"
+gem 'rspec-rails', "~> 7.1.0"
 gem 'sassc-rails'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
