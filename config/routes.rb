@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
-  resources :employees
+
+  resources :employees do
+    resources :attendances, only: [:index,:new, :create]
+    resources :reviews, only: [:index,:new, :create]
+  end
+
+  resources :departments, only: [:index,:new, :create, :edit, :update, :destroy]
   devise_for :users, defaults: {format: :html}
   devise_scope :user do
     root to: "devise/sessions#new"
   end
+
+  get 'departments', to: 'departments#index'
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

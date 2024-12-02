@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_30_215837) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_02_224140) do
+  create_table "attendances", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.date "date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "notes"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -21,6 +37,28 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_215837) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "performance_reviews", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "reviewer_id", null: false
+    t.text "comments"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_performance_reviews_on_employee_id"
+    t.index ["reviewer_id"], name: "index_performance_reviews_on_reviewer_id"
+  end
+
+  create_table "preformance_reviews", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "reviewer_id", null: false
+    t.text "comments"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_preformance_reviews_on_employee_id"
+    t.index ["reviewer_id"], name: "index_preformance_reviews_on_reviewer_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -29,7 +67,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_215837) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "department_id"
+    t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "attendances", "users"
+  add_foreign_key "performance_reviews", "employees"
+  add_foreign_key "performance_reviews", "reviewers"
+  add_foreign_key "preformance_reviews", "employees"
+  add_foreign_key "preformance_reviews", "reviewers"
+  add_foreign_key "users", "departments"
 end

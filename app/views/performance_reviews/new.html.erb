@@ -1,0 +1,12 @@
+<h2>Add Performance Review</h2>
+<%= form_with model: @review, local:true do |f| %>
+  <div class="mb-3">
+    <%= f.label :comments, class: "form-label" %>
+    <%= f.text_area :comments, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :rating, class: "form-label" %>
+    <%= f.number_field :rating, in: 1..5, class: "form-control" %>
+  </div>
+  <%= f.submit "Submit Review",class: "btn btn-primary" %>
+<% end %>

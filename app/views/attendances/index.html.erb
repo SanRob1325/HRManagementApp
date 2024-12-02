@@ -1,0 +1,20 @@
+<h2>Attendance Records</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.date %></td>
+        <td><%= attendance.status %></td>
+        <td><%= attendance.notes %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Mark Attendance", new_employee_attendance_path(@employee),class: "btn btn-primary" %>

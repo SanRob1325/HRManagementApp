@@ -1,0 +1,17 @@
+<h2>Departments</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @departments.each do |department| %>
+    <tr>
+      <td><%= department.name %></td>
+      <td><%= link_to "Show", department_path(department) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

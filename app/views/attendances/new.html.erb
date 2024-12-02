@@ -1,0 +1,17 @@
+<h2>Mark Attendance</h2>
+<%= form_with model: @attendances, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :date, class: "form-label" %>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :status, class: "form-label" %>
+    <%= f.select :status, ['Present','Absent','Remote Work'],{}, class: "form-select" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :notes, class: "form-label" %>
+    <% f.text_area :notes, class: "form-control",rows: 3 %>
+  </div>
+
+  <%= f.submit "Save" ,class: "btn btn-success" %>
+<% end %>

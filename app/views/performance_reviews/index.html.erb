@@ -1,0 +1,22 @@
+<h2>Performance Reviews</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Reviewer</th>
+      <th>Comments</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @performance_reviews.each do |review| %>
+      <tr>
+        <td><%= review.employee.name %></td>
+        <td><%= review.reviewer.name %></td>
+        <td><%= review.comments %></td>
+        <td><%= review.rating %></td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
