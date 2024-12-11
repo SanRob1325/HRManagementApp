@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index,:new, :create]
   end
 
-  resources :departments, only: [:index,:new, :create, :edit, :update, :destroy]
+  resources :departments
   devise_for :users, defaults: {format: :html}
   devise_scope :user do
     root to: "devise/sessions#new"

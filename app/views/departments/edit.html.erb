@@ -1,8 +1,7 @@
-<h2>New Department</h2>
-<%= form_with model:  @department, local: true, class: 'needs-validation' do |f|%>
+<h2>Edit Department</h2>
+<%= form_with model: @department, local: true do |f| %>
   <% if @department.errors.any? %>
     <div class="alert alert-danger">
-      <strong>Please address an incorrect info</strong>
       <ul>
         <% @department.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,16 +12,14 @@
 
   <div class="mb-3">
     <%= f.label :name, class: 'form-label' %>
-    <%= f.text_field :name, class: 'form-control'  %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-
   <div class="mb-3">
     <%= f.label :description, class: 'form-label' %>
     <%= f.text_area :description, class: 'form-control' %>
   </div>
-
   <div class="mb-3">
-    <%= f.submit 'Create Department', class: 'btn btn-success' %>
+    <%=f.submit 'Update Department', class: 'btn btn-success' %>
   </div>
 <% end %>
 

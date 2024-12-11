@@ -25,8 +25,14 @@ class DepartmentsController < ApplicationController
   end
 
   def destroy
-    @department.destroy
-    redirect_to departments_path, notice: "Department was successfully deleted"
+    @department = Department.find(params[:id])
+    if @department.destroy
+      flash[:notice] = "Department was successfully deleted"
+      redirect_to departments_path
+    else
+      flash[:alert] = "Department was successfully deleted"
+    end
+    redirect_to departments_path
   end
 
   def create
@@ -45,6 +51,6 @@ class DepartmentsController < ApplicationController
   end
 
   def department_params
-    params.require(:department).permit(:name)
+    params.require(:department).permit(:name, :description)
   end
 end
